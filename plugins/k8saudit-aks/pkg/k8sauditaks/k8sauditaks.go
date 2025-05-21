@@ -137,7 +137,7 @@ func (p *Plugin) Open(_ string) (source.Instance, error) {
 		return nil, err
 	}
 	p.Logger.Printf("opened blob checkpoint connection")
-	consumerClient, err := azeventhubs.NewConsumerClient(p.Config.EventHubNamespace, p.Config.EventHubName, azeventhubs.DefaultConsumerGroup, cred, nil)
+	consumerClient, err := azeventhubs.NewConsumerClient(fmt.Sprintf("%s.servicebus.windows.net", p.Config.EventHubNamespace), p.Config.EventHubName, azeventhubs.DefaultConsumerGroup, cred, nil)
 	p.Logger.Printf("opened consumer client")
 	if err != nil {
 		p.Logger.Printf("error creating consumer client: %v", err)
