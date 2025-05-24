@@ -214,7 +214,7 @@ func (p *Plugin) Open(_ string) (source.Instance, error) {
 	// Run the processor
 	go func() {
 		if err := processor.Run(ctx); err != nil {
-			p.Logger.Printf("error running processor: %v", err)
+			p.Logger.Fatalf("error running processor: %v", err)
 		}
 	}()
 
